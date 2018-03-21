@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EstudianteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cargos">
+    <Key>
+      <PropertyRef Name="IdCargo" />
+    </Key>
+    <Property Name="IdCargo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomCargo" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsuarioPro">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fkIdCargo" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Usuario_Cargos">
+    <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
+    <End Role="UsuarioPro" Type="Self.UsuarioPro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cargos">
+        <PropertyRef Name="IdCargo" />
+      </Principal>
+      <Dependent Role="UsuarioPro">
+        <PropertyRef Name="fkIdCargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EstudianteModelStoreContainer">
+    <EntitySet Name="Cargos" EntityType="Self.Cargos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsuarioPro" EntityType="Self.UsuarioPro" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Usuario_Cargos" Association="Self.FK_Usuario_Cargos">
+      <End Role="Cargos" EntitySet="Cargos" />
+      <End Role="UsuarioPro" EntitySet="UsuarioPro" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

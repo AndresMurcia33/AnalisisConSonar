@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EstudianteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cargos">
+    <Key>
+      <PropertyRef Name="IdCargo" />
+    </Key>
+    <Property Name="IdCargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nomCargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="UsuarioPro" Relationship="Self.FK_Usuario_Cargos" FromRole="Cargos" ToRole="UsuarioPro" />
+  </EntityType>
+  <EntityType Name="UsuarioPro">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nomUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fkIdCargo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cargos" Relationship="Self.FK_Usuario_Cargos" FromRole="UsuarioPro" ToRole="Cargos" />
+  </EntityType>
+  <Association Name="FK_Usuario_Cargos">
+    <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
+    <End Role="UsuarioPro" Type="Self.UsuarioPro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cargos">
+        <PropertyRef Name="IdCargo" />
+      </Principal>
+      <Dependent Role="UsuarioPro">
+        <PropertyRef Name="fkIdCargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EstudianteEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cargos" EntityType="Self.Cargos" />
+    <EntitySet Name="UsuarioPro" EntityType="Self.UsuarioPro" />
+    <AssociationSet Name="FK_Usuario_Cargos" Association="Self.FK_Usuario_Cargos">
+      <End Role="Cargos" EntitySet="Cargos" />
+      <End Role="UsuarioPro" EntitySet="UsuarioPro" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

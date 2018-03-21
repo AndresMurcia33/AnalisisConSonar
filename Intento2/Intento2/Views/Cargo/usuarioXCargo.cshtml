@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Intento2.Models.UsuarioPro>
+
+@{
+    ViewBag.Title = "usuarioXCargo";
+}
+
+<h2>usuarioXCargo</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fkIdCargo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fkIdCargo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

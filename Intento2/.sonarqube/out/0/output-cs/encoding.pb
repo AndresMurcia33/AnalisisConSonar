@@ -1,0 +1,10 @@
+Q
+HC:\Users\Hernan\source\repos\Intento2\Intento2\App_Start\BundleConfig.csutf-8Q
+HC:\Users\Hernan\source\repos\Intento2\Intento2\App_Start\FilterConfig.csutf-8P
+GC:\Users\Hernan\source\repos\Intento2\Intento2\App_Start\RouteConfig.csutf-8V
+MC:\Users\Hernan\source\repos\Intento2\Intento2\Controllers\CargoController.csutf-8U
+LC:\Users\Hernan\source\repos\Intento2\Intento2\Controllers\HomeController.csutf-8d
+[C:\Users\Hernan\source\repos\Intento2\Intento2\Controllers\MantenimientoCargosController.csutf-8F
+=C:\Users\Hernan\source\repos\Intento2\Intento2\Global.asax.csutf-8I
+@C:\Users\Hernan\source\repos\Intento2\Intento2\Models\Usuario.csutf-8R
+IC:\Users\Hernan\source\repos\Intento2\Intento2\Properties\AssemblyInfo.csutf-8

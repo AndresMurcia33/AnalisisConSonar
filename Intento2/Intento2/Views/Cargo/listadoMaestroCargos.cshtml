@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Intento2.Models.Cargos>
+
+@{
+    ViewBag.Title = "listadoMaestroCargos";
+}
+
+<h2>listadoMaestroCargos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdCargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomCargo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdCargo)
+        </td>
+        <td>
+            @* Muestra un link para mostrar usuarios por cargo y es redireccionado *@
+            @Html.ActionLink(item.nomCargo,"usuarioXCargo", new { cargo = item.nomCargo})
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
